@@ -1,2 +1,2 @@
 # arduino-Workshop
-collection arduino projects with code 
+collection of arduino projects to introduce basic arduino functionality
