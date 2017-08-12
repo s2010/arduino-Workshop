@@ -1,0 +1,103 @@
+/*   
+   The circuit:
+  * VCC connection of the sensor attached to +5V
+  * GND connection of the sensor attached to ground
+  * TRIG connection of the sensor attached to digital pin 2
+  * ECHO connection of the sensor attached to digital pin 4
+   Original code for Ping))) example was created by David A. Mellis
+   Adapted for HC-SR04 by Tautvidas Sipavicius
+   This example code is in the public domain.
+ */
+
+const int trigPin = 2;
+const int echoPin = 4;
+const int buzzerPin = 8;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(buzzerPin, OUTPUT);
+}
+
+void loop()
+{
+  // establish variables for duration of the ping, 
+  // and the distance result in inches and centimeters:
+  long duration, cm;
+
+  // The sensor is triggered by a HIGH pulse of 10 or more microseconds.
+  // Give a short LOW pulse beforehand to ensure a clean HIGH pulse:
+  
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  
+  // Read the signal from the sensor: a HIGH pulse whose
+  // duration is the time (in microseconds) from the sending
+  // of the ping to the reception of its echo off of an object.
+  
+  duration = pulseIn(echoPin, HIGH);
+
+  // convert the time into a distance
+  cm = microsecondsToCentimeters(duration);
+  
+  Serial.print(cm);
+  Serial.print("cm");
+  Serial.println();
+  
+  delay(100);
+
+  if (cm > 30){
+    digitalWrite(buzzerPin, LOW);
+     Serial.print("BUZZER OFF");
+     Serial.println();
+  }
+  if ((cm <= 30)  && (cm > 20)){
+    digitalWrite(buzzerPin, HIGH);
+     Serial.print("1");
+     Serial.println();
+    delay(650);
+    digitalWrite(buzzerPin, LOW);
+     Serial.print("0");
+     Serial.println();
+    delay(650);
+  }
+  if ((cm <= 20)  && (cm > 14)){
+    digitalWrite(buzzerPin, HIGH);
+     Serial.print("1");
+     Serial.println();
+    delay(250);
+    digitalWrite(buzzerPin, LOW);
+     Serial.print("0");
+     Serial.println();
+    delay(250);
+  }
+  if ((cm <= 14)  && (cm > 5)){
+    digitalWrite(buzzerPin, HIGH);
+     Serial.print("1");
+     Serial.println();
+    delay(50);
+    digitalWrite(buzzerPin, LOW);
+     Serial.print("0");
+     Serial.println();
+    delay(50);
+  }
+  if (cm <= 5){
+    digitalWrite(buzzerPin, HIGH);
+     Serial.print("1");
+  }
+
+
+}
+
+
+long microsecondsToCentimeters(long microseconds)
+{
+  // The speed of sound is 340 m/s or 29 microseconds per centimeter.
+  // The ping travels out and back, so to find the distance of the
+  // object we take half of the distance travelled.
+  return microseconds / 29 / 2;
+}

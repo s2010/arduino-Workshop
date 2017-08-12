@@ -1,0 +1,20 @@
+/*Sound Sensor Example*/
+int led = 13;
+int soundsensor = 12; 
+
+void setup() {                
+    pinMode(soundsensor, INPUT); 
+    pinMode(led, OUTPUT); 
+    }
+    
+void loop() {
+    int statusSensor = digitalRead (soundsensor);
+    if (statusSensor == 1)
+    {
+      digitalWrite(led,HIGH);
+    } else
+    {
+      digitalWrite(led, LOW);
+    }
+}
+    
