@@ -1,0 +1,40 @@
+Lesson 1: RGB Control (Part 2)
+Analog Control - The following code
+controls the RGB LED using PWM
+signals. The LED will fade through
+a different set of colors.
+
+www.hobbydistrict.com
+November 2015
+*/
+
+int R = 11;
+int G = 10;
+int B = 9 ;
+
+void setup() { // Assigns the three pins connected to the RGB as OUTPUTS
+pinMode(R, OUTPUT);
+pinMode(G, OUTPUT);
+pinMode(B, OUTPUT);
+}
+
+void loop(){
+MixColor(255, 0, 0); // red
+delay(1000);
+MixColor(0, 255, 0); // green
+delay(1000);
+MixColor(0, 0, 255); // blue
+delay(1000);
+MixColor(255, 255, 0); // yellow
+delay(1000);
+MixColor(80, 0, 80); // purple
+delay(1000);
+MixColor(0, 255, 255); // aqua
+delay(1000);
+}
+
+void MixColor(int red, int green, int blue){ // The following method sets PWM values to each pin, RGB from 0-255
+analogWrite(R, red);
+analogWrite(G, green);
+analogWrite(B, blue);
+}

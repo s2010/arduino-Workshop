@@ -1,25 +1,33 @@
-#include <Servo.h>
+/*
+Lesson 1: RGB Control (Part 1)
+Digital Control - The following code
+controls the RGB LED using digital
+signals. The LED will blink through
+all colors, one at a time.
 
+www.hobbydistrict.com
+November 2015
+*/
 
+int R = 11;
+int G = 10;
+int B = 9 ;
 
-Servo myservo;  // create servo object to control a servo
-// twelve servo objects can be created on most boards
-
-int servoPin = 10; //it can be any PWM pin 9, 10 11
-
-int pos = 0;    // variable to store the servo position
-
-void setup() {
-  myservo.attach(servoPin);  // attaches the servo on pin 9 to the servo object
+void setup() { // Assigns the three pins connected to the RGB as OUTPUTS
+pinMode(R, OUTPUT);
+pinMode(G, OUTPUT);
+pinMode(B, OUTPUT);
 }
 
 void loop() {
-  for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
-    myservo.write(pos);              // tell servo to go to position in variable 'pos'
-    delay(15);                       // waits 15ms for the servo to reach the position
-  }
-  for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
-    myservo.write(pos);              // tell servo to go to position in variable 'pos'
-    delay(15);                       // waits 15ms for the servo to reach the position
-  }
+
+digitalWrite(R, HIGH); // Switch ON RED
+delay(1000); // Wait for a second
+digitalWrite(R, LOW); // Switch OFF RED
+digitalWrite(G, HIGH); // Switch ON GREEN
+delay(1000);
+digitalWrite(G, LOW); // Switch OFF GREEN
+digitalWrite(B, HIGH); // Switch ON BLUE
+delay(1000);
+digitalWrite(B, LOW); //Switch OFF BLUE
 }

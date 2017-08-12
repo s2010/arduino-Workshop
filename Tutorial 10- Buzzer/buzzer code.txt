@@ -1,0 +1,15 @@
+int buzzPin=8; //the digital pin to which the buzzer is connected
+
+
+void setup() {
+  // initialize digital pin buzzPin as an output.
+  pinMode(buzzPin, OUTPUT);
+}
+
+// the loop function runs over and over again forever
+void loop() {
+  tone(buzzPin,3000);   //sending a tone to the buzzer with frequency 3000Hz
+  delay(1000);        // leaving the buzzer working for 1000 ms          
+  noTone(buzzPin);  // stopping the buzzer
+  delay(1000);       // leaving the buzzer off for 1000ms
+}

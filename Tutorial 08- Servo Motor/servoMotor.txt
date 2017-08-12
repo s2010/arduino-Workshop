@@ -1,5 +1,16 @@
 #include <Servo.h>
 
+/*
+ *   www.hobbydistrict.com
+ *   Lesson 11:
+ *   DC Motors. 
+ *   The following code controls a servo motor 
+ *   back and forth by rotating it 180 degrees 
+ *   clockwise, then 180 degrees anti-clockwise    
+ *   
+ *   July 20, 2016
+ */   
+
 
 
 Servo myservo;  // create servo object to control a servo
