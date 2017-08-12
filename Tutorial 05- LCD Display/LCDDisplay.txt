@@ -35,7 +35,8 @@ void setup() {
   // set up the LCD's number of columns and rows:
   lcd.begin(16, 2);
   // Print a message to the LCD.
-  lcd.print("Maker Space Lab");
+  lcd.print("Hobby District");
+               
   lcd.setCursor(0,1);
   lcd.print("Start Timer: ");
 }
@@ -48,3 +49,4 @@ void loop() {
   lcd.print(millis()/1000);
 
 }
+
